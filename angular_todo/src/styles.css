@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "~@angular/material/prebuilt-themes/pink-bluegrey.css"; */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(233, 219, 219);
+}
+.container-main {
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+}
+.container-todos {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.text-width {
+    min-width: 150px;
+    max-width: 800px;
+    width: 100%;
+    /* padding: 10px;
+    border: 2px solid rgba(134, 134, 134, 0.856);
+    border-radius: 2px; */
+}
+
+.text-full-width{
+    width: 100%;
+}

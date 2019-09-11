@@ -1,0 +1,6 @@
+--require chai
+--reporter spec
+--recursive
+--ui bdd
+--globals sails
+--timeout 100s

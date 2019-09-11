@@ -1,0 +1,65 @@
+<mat-card class="todo">
+<mat-list-item>
+    <mat-checkbox 
+        class="example-margin"
+        type="checkbox" 
+        name="checkbox" 
+        [disabled]="editMode"
+        [checked]="todoItem.isCompleted" 
+        (change)="toggleCheckbox()" >
+    </mat-checkbox>
+    <!-- if task isCompleted, strike it using <del> tag "else" display it -->
+    <div class="task-area">
+    <form class="text-width display">
+        <del *ngIf="todoItem.isCompleted; else noStrike" class="display">
+            {{todoItem.title}}
+        </del>
+        <ng-template #noStrike>
+            <!-- check if task is editMode or not      -->
+            <mat-form-field *ngIf="editMode; else displayTask" class="text-full-width display">
+                <input matInput #ipt
+                    type="text" 
+                    name="updatedTask" 
+                    [value]="todoItem.title" 
+                    (keyup)="storeUpdate($event)"
+                    (keyup.enter)="sendUpdatedTask()">
+            </mat-form-field>
+            <ng-template #displayTask class="display">
+                    {{todoItem.title}}
+            </ng-template>
+        </ng-template>
+    </form>
+    </div>
+   
+    <!-- buttons -->
+    <button 
+        mat-icon-button
+        (click)="toggleEditMode()" 
+        *ngIf="!editMode" 
+        [disabled]="todoItem.isCompleted"
+        class="editButton">
+        <mat-icon>edit</mat-icon>
+    </button>
+    <button 
+        mat-icon-button
+        (click)="sendUpdatedTask()" 
+        *ngIf="editMode && !todoItem.isCompleted"
+        class="saveButton">
+        <mat-icon>save</mat-icon>
+    </button>
+    <button 
+        mat-icon-button
+        (click)="deleteTask()"
+        *ngIf="!editMode"
+        class="deleteButton">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <button
+        mat-icon-button
+        (click)="cancel()" 
+        *ngIf="editMode"
+        class="cancelButton">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</mat-list-item>
+</mat-card>
